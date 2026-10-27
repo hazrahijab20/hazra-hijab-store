@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5efe7">
+<title>Hazra Hijab | Your Everyday Elegance</title>
+<style>
+:root{--cream:#f6f0e8;--paper:#fffdf9;--ink:#44362f;--muted:#88776d;--rose:#c69b91;--line:#e9ded4;--dark:#554239}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.topbar{text-align:center;background:var(--dark);color:white;padding:9px 14px;font-size:12px;letter-spacing:.08em}.nav{display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,5vw,70px);border-bottom:1px solid var(--line);gap:20px}.brand{font-family:Georgia,serif;font-size:25px;letter-spacing:.12em;font-weight:bold}.tag{font-size:10px;letter-spacing:.22em;color:var(--muted);margin-top:5px}.navright{display:flex;align-items:center;gap:16px}.textbtn{border:0;background:none;color:var(--ink)}.hero{display:grid;grid-template-columns:1.05fr .95fr;background:var(--cream);min-height:390px}.herotext{padding:clamp(28px,6vw,82px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}.eyebrow{font-size:11px;letter-spacing:.2em;color:#8a6e61;text-transform:uppercase}.hero h1{font-family:Georgia,serif;font-size:clamp(36px,5vw,62px);font-weight:normal;line-height:1.08;margin:18px 0 14px}.hero p{line-height:1.7;color:#75645a;max-width:390px}.btn{border:0;background:var(--dark);color:white;padding:13px 20px;letter-spacing:.04em}.heroimg{min-height:320px;background:linear-gradient(145deg,#e7d7ca,#c8a99a);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.scarf{width:53%;height:78%;border-radius:48% 48% 15% 15%;background:linear-gradient(135deg,#d7b8ae,#a98074);transform:rotate(-7deg);box-shadow:28px 25px 0 #e8d9ce,-25px 16px 0 #c3a092;opacity:.9}.heroimg:after{content:"HAZRA";position:absolute;bottom:22px;right:24px;font-family:Georgia,serif;letter-spacing:.3em;font-size:12px;color:#fff8f0}
+.section{padding:48px clamp(18px,5vw,70px)}.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px;gap:15px}.section h2{font-family:Georgia,serif;font-size:32px;font-weight:normal;margin:0 0 7px}.sub{color:var(--muted);font-size:14px}.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.product{min-width:0}.productimg{height:260px;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.productimg:before{content:"";width:62%;height:76%;border-radius:48% 48% 12% 12%;background:var(--fabric,#d7b8ae);box-shadow:18px 12px 0 #e7d8cd,-15px 10px 0 #c7a79b;transform:rotate(-8deg)}.product:nth-child(2) .productimg:before{--fabric:#9b8175}.product:nth-child(3) .productimg:before{--fabric:#c6b9a1}.productinfo{padding:13px 0}.producttitle{font-family:Georgia,serif;font-size:18px}.price{margin-top:7px;font-weight:bold}.productrow{display:flex;justify-content:space-between;align-items:center;gap:10px}.add{border:1px solid var(--dark);background:transparent;padding:9px 12px;color:var(--dark);font-size:12px}.add:hover{background:var(--dark);color:white}
+.footer{background:var(--cream);padding:30px clamp(18px,5vw,70px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.overlay{position:fixed;inset:0;background:#2a201b80;display:none;justify-content:flex-end;z-index:10}.overlay.open{display:flex}.drawer{background:var(--paper);height:100%;width:min(540px,100%);overflow:auto;padding:24px}.drawerhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.drawer h2{font-family:Georgia,serif;font-weight:normal}.close{border:0;background:none;font-size:26px}.cartitem{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid var(--line)}.cartitem small{display:block;color:var(--muted);margin-top:4px}.qty{display:flex;align-items:center;gap:9px}.qty button{background:var(--cream);border:0;padding:5px 9px}.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}.field label{font-size:13px;color:var(--muted)}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);padding:12px;background:white;border-radius:0;color:var(--ink)}.totals{border-top:1px solid var(--line);margin-top:18px;padding-top:15px}.totalrow{display:flex;justify-content:space-between;margin:10px 0}.grand{font-size:19px;font-weight:bold}.notice{background:#f6f0e8;padding:12px;font-size:12px;line-height:1.6;color:#6e5b50;margin:14px 0}.empty{padding:30px 0;color:var(--muted);text-align:center}.hidden{display:none!important}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.heroimg{min-height:250px;grid-row:1}.herotext{padding:30px 22px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.productimg{height:210px}.section{padding-top:35px;padding-bottom:35px}.brand{font-size:19px}.nav{padding:16px}.navright{gap:8px}}
+@media(max-width:420px){.products{grid-template-columns:1fr 1fr}.productimg{height:165px}.productrow{align-items:flex-start;flex-direction:column}.add{width:100%}}
+</style>
+</head>
+<body>
+<div class="topbar">COMPLIMENTARY GIFT WRAPPING ON SELECT ORDERS · MALAYSIA</div>
+<header class="nav">
+  <div><div class="brand">HAZRA HIJAB</div><div class="tag">MODESTLY YOURS</div></div>
+  <div class="navright"><button class="textbtn" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">Shop</button><button class="textbtn" onclick="openCart()">Bag (<span id="bagcount">0</span>)</button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="herotext"><div class="eyebrow">Everyday essentials</div><h1>Your Everyday<br>Elegance.</h1><p>Discover effortless comfort and timeless colours, thoughtfully chosen for your everyday style.</p><button class="btn" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">SHOP THE COLLECTION</button></div>
+  <div class="heroimg" aria-label="Decorative scarf illustration"><div class="scarf"></div></div>
+</section>
+<section class="section" id="collection">
+  <div class="sectionhead"><div><div class="eyebrow">The collection</div><h2>Find your favourite</h2><div class="sub">Everyday scarves, made to style your way.</div></div></div>
+  <div class="products">
+    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Dusty Rose</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-rose','Elena Cotton Shawl — Dusty Rose',27.5)">ADD TO BAG</button></div></div></article>
+    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Mocha</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-mocha','Elena Cotton Shawl — Mocha',27.5)">ADD TO BAG</button></div></div></article>
+    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Oat</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-oat','Elena Cotton Shawl — Oat',27.5)">ADD TO BAG</button></div></div></article>
+  </div>
+</section>
+</main>
+<footer class="footer"><div><div class="brand">HAZRA HIJAB</div><div class="tag">MODESTLY YOURS</div></div><div>Questions? Contact us through our official social media.</div><div>© <span id="year"></span> Hazra Hijab</div></footer>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+  <aside class="drawer">
+    <div class="drawerhead"><h2>Your bag</h2><button class="close" onclick="closeCart()" aria-label="Close cart">×</button></div>
+    <div id="cartItems"></div>
+    <div id="checkout" class="hidden">
+      <h2>Delivery details</h2>
+      <div class="field"><label for="custName">Full name</label><input id="custName" autocomplete="name" required placeholder="Your full name"></div>
+      <div class="field"><label for="custPhone">Phone number</label><input id="custPhone" autocomplete="tel" required placeholder="01X-XXXXXXX"></div>
+      <div class="field"><label for="custEmail">Email (optional)</label><input id="custEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label for="address">Full delivery address</label><textarea id="address" rows="3" required placeholder="House number, street, postcode, town"></textarea></div>
+      <div class="field"><label for="state">State</label><select id="state" required><option value="">Choose state</option><option>Johor</option><option>Kedah</option><option>Kelantan</option><option>Melaka</option><option>Negeri Sembilan</option><option>Pahang</option><option>Perak</option><option>Perlis</option><option>Pulau Pinang</option><option>Sabah</option><option>Sarawak</option><option>Selangor</option><option>Terengganu</option><option>W.P. Kuala Lumpur</option><option>W.P. Labuan</option><option>W.P. Putrajaya</option></select></div>
+      <div class="field"><label for="courier">Preferred courier</label><select id="courier" onchange="renderTotals()"><option value="jnt">J&T Express — RM6.00 (sample rate)</option><option value="pos">Pos Laju — RM5.50 (sample rate)</option><option value="ninja">Ninja Van — RM5.80 (sample rate)</option></select></div>
+      <div class="notice">Shipping prices are sample settings only. Replace them with the actual rates you want to charge. You will book the courier manually after the order is confirmed.</div>
+      <div class="totals"><div class="totalrow"><span>Subtotal</span><span id="subtotal">RM0.00</span></div><div class="totalrow"><span>Shipping</span><span id="shipping">RM6.00</span></div><div class="totalrow grand"><span>Total</span><span id="grandtotal">RM0.00</span></div></div>
+      <button class="btn" style="width:100%;margin-top:15px" onclick="submitDemoOrder()">PLACE TEST ORDER</button>
+      <div class="notice">DEMO ONLY: this starter website does not collect payment or send orders to a server yet. A secure payment gateway and backend must be connected before accepting real orders.</div>
+    </div>
+  </aside>
+</div>
+<script>
+const cart={};
+const products={
+ 'elena-rose':{name:'Elena Cotton Shawl — Dusty Rose',price:27.5},
+ 'elena-mocha':{name:'Elena Cotton Shawl — Mocha',price:27.5},
+ 'elena-oat':{name:'Elena Cotton Shawl — Oat',price:27.5}
+};
+const rates={jnt:6,pos:5.5,ninja:5.8};
+const fmt=n=>'RM'+n.toFixed(2);
+function addToCart(id,name,price){if(!cart[id])cart[id]={name,price,qty:0};cart[id].qty++;renderCart();openCart();}
+function changeQty(id,delta){if(!cart[id])return;cart[id].qty+=delta;if(cart[id].qty<=0)delete cart[id];renderCart();}
+function subtotal(){return Object.values(cart).reduce((s,i)=>s+i.price*i.qty,0)}
+function count(){return Object.values(cart).reduce((s,i)=>s+i.qty,0)}
+function renderCart(){
+ document.getElementById('bagcount').textContent=count();
+ const root=document.getElementById('cartItems');
+ if(!count()){root.innerHTML='<div class="empty">Your bag is currently empty.</div>';document.getElementById('checkout').classList.add('hidden');return;}
+ root.innerHTML=Object.entries(cart).map(([id,i])=>`<div class="cartitem"><div><strong>${i.name}</strong><small>${fmt(i.price)} each</small></div><div class="qty"><button onclick="changeQty('${id}',-1)">−</button><span>${i.qty}</span><button onclick="changeQty('${id}',1)">+</button></div></div>`).join('');
+ document.getElementById('checkout').classList.remove('hidden');renderTotals();
+}
+function renderTotals(){const c=document.getElementById('courier');const r=c?rates[c.value]:6;document.getElementById('subtotal').textContent=fmt(subtotal());document.getElementById('shipping').textContent=fmt(r);document.getElementById('grandtotal').textContent=fmt(subtotal()+r);}
+function openCart(){document.getElementById('cartOverlay').classList.add('open');renderCart();}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
+function submitDemoOrder(){
+ if(!count()){alert('Your bag is empty.');return}
+ const required=['custName','custPhone','address','state'];for(const id of required){const el=document.getElementById(id);if(!el.value.trim()){el.focus();alert('Please complete all required delivery details.');return}}
+ alert('This is a demo only. No order or payment has been sent. Connect the secure backend and payment gateway before launch.');
+}
+document.getElementById('year').textContent=new Date().getFullYear();renderCart();
+</script>
+</body>
+</html>
