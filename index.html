@@ -14,6 +14,7 @@
 @media(max-width:700px){.hero{grid-template-columns:1fr}.heroimg{min-height:250px;grid-row:1}.herotext{padding:30px 22px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.productimg{height:210px}.section{padding-top:35px;padding-bottom:35px}.brand{font-size:19px}.nav{padding:16px}.navright{gap:8px}}
 @media(max-width:420px){.products{grid-template-columns:1fr 1fr}.productimg{height:165px}.productrow{align-items:flex-start;flex-direction:column}.add{width:100%}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="topbar">COMPLIMENTARY GIFT WRAPPING ON SELECT ORDERS · MALAYSIA</div>
@@ -28,11 +29,9 @@
 </section>
 <section class="section" id="collection">
   <div class="sectionhead"><div><div class="eyebrow">The collection</div><h2>Find your favourite</h2><div class="sub">Everyday scarves, made to style your way.</div></div></div>
-  <div class="products">
-    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Dusty Rose</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-rose','Elena Cotton Shawl — Dusty Rose',27.5)">ADD TO BAG</button></div></div></article>
-    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Mocha</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-mocha','Elena Cotton Shawl — Mocha',27.5)">ADD TO BAG</button></div></div></article>
-    <article class="product"><div class="productimg"></div><div class="productinfo"><div class="producttitle">Elena Cotton Shawl</div><div class="sub">Oat</div><div class="productrow"><div class="price">RM27.50</div><button class="add" onclick="addToCart('elena-oat','Elena Cotton Shawl — Oat',27.5)">ADD TO BAG</button></div></div></article>
-  </div>
+<div class="products" id="productsGrid">
+  <p>Loading products...</p>
+</div>
 </section>
 </main>
 <footer class="footer"><div><div class="brand">HAZRA HIJAB</div><div class="tag">MODESTLY YOURS</div></div><div>Questions? Contact us through our official social media.</div><div>© <span id="year"></span> Hazra Hijab</div></footer>
@@ -58,11 +57,12 @@
 </div>
 <script>
 const cart={};
-const products={
- 'elena-rose':{name:'Elena Cotton Shawl — Dusty Rose',price:27.5},
- 'elena-mocha':{name:'Elena Cotton Shawl — Mocha',price:27.5},
- 'elena-oat':{name:'Elena Cotton Shawl — Oat',price:27.5}
-};
+const supabaseClient = window.supabase.createClient(
+  'https://zazanrjpgbdspfnpnjuw.supabase.co',
+  'sb_publishable_OclHWzrdrzvQgZiXhc4pPA_lNYxxfeq'
+);
+
+let products = {};
 const rates={jnt:6,pos:5.5,ninja:5.8};
 const fmt=n=>'RM'+n.toFixed(2);
 function addToCart(id,name,price){if(!cart[id])cart[id]={name,price,qty:0};cart[id].qty++;renderCart();openCart();}
@@ -84,7 +84,97 @@ function submitDemoOrder(){
  const required=['custName','custPhone','address','state'];for(const id of required){const el=document.getElementById(id);if(!el.value.trim()){el.focus();alert('Please complete all required delivery details.');return}}
  alert('This is a demo only. No order or payment has been sent. Connect the secure backend and payment gateway before launch.');
 }
-document.getElementById('year').textContent=new Date().getFullYear();renderCart();
+async function loadProducts(){
+  const grid = document.getElementById('productsGrid');
+
+  grid.innerHTML = '<p>Loading products...</p>';
+
+  const { data, error } = await supabaseClient
+    .from('products')
+    .select('id,name,description,price,image_url,colors,stock,is_active')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false });
+
+  if(error){
+    console.error('Supabase error:', error);
+    grid.innerHTML = '<p>Unable to load products. Please try again later.</p>';
+    return;
+  }
+
+  products = {};
+
+  if(!data || data.length === 0){
+    grid.innerHTML = '<p>No products available yet.</p>';
+    return;
+  }
+
+  grid.innerHTML = '';
+
+  data.forEach(item => {
+    const id = String(item.id);
+    const price = Number(item.price);
+
+    products[id] = {
+      name: item.name,
+      price: price
+    };
+
+    const card = document.createElement('article');
+    card.className = 'product';
+
+    const imageBox = document.createElement('div');
+    imageBox.className = 'productimg';
+
+    if(item.image_url){
+      const img = document.createElement('img');
+      img.src = item.image_url;
+      img.alt = item.name;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      imageBox.appendChild(img);
+    }else{
+      imageBox.textContent = 'HAZRA HIJAB';
+    }
+
+    const info = document.createElement('div');
+    info.className = 'productinfo';
+
+    const title = document.createElement('div');
+    title.className = 'producttitle';
+    title.textContent = item.name;
+
+    const description = document.createElement('div');
+    description.textContent = item.description || '';
+
+    const colours = document.createElement('div');
+    colours.textContent = item.colors?.length
+      ? item.colors.join(' · ')
+      : '';
+
+    const priceText = document.createElement('strong');
+    priceText.textContent = fmt(price);
+
+    const button = document.createElement('button');
+    button.className = 'add';
+    button.textContent = Number(item.stock) <= 0
+      ? 'SOLD OUT'
+      : 'ADD TO BAG';
+
+    button.disabled = Number(item.stock) <= 0;
+
+    button.addEventListener('click', () => {
+      addToCart(id, item.name, price);
+    });
+
+    info.append(title, description, colours, priceText, button);
+    card.append(imageBox, info);
+    grid.appendChild(card);
+  });
+}
+document.getElementById('year').textContent=new Date().getFullYear();
+renderCart();
+loadProducts();
 </script>
 </body>
 </html>
